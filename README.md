@@ -1,2 +1,8 @@
 # odoo_training
 Here, you'll find comprehensive resources for mastering Odoo, including a dedicated School Management module. Explore our well-documented codebase to efficiently manage students, courses, attendance, grades, and more. Start your journey to becoming an Odoo expert and optimize educational processes with ease. Happy learning and coding!
+
+Overview:
+Welcome to the School Management Module for Odoo! This comprehensive and intuitive module empowers educational institutions to streamline their administrative processes and enhance their academic management. From managing students and teachers to handling courses and exams, our School Management Module is designed to simplify the complexities of running a school efficiently.
+
+Purpose:
+The purpose of this module is to revolutionize your understanding of Odoo and unveil the limitless potential of creating custom modules tailored to your specific needs. Through this enriching experience, you will embark on a journey of learning the fundamental concepts of Odoo development and master the art of crafting bespoke solutions. Whether you are new to Odoo or an experienced developer seeking to expand your skills, our School Management Module will equip you with the knowledge and confidence to build powerful applications in the world of Odoo. Embrace this opportunity to unlock the wonders of educational management and transform the way you approach software development with Odoo. Let's dive in and unleash the true potential of your school management system!

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="school_subject_tree_view" model="ir.ui.view">
+        <field name="name">school.subject.tree</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="school_subject_form_view" model="ir.ui.view">
+        <field name="name">School subject Form View</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h2 class="oe_title">
+                        <field name="name"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_subject_search_view" model="ir.ui.view">
+        <field name="name">school.subject.search</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <search string="subject">
+                <field name="name"/>
+                <field name="code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="school_subject_act_window" model="ir.actions.act_window">
+        <field name="name">subject</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new subject.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_school_subject_tree_view" model="ir.actions.act_window.view">
+        <field name="sequence">2</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="school_subject_tree_view"/>
+        <field name="act_window_id" ref="school_subject_act_window"/>
+    </record>
+
+    <record id="action_school_subject_form_view" model="ir.actions.act_window.view">
+        <field name="sequence">2</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="school_subject_form_view"/>
+        <field name="act_window_id" ref="school_subject_act_window"/>
+    </record>
+
+    <menuitem name="Subject" id="school_subject_menu" parent="school_management_main_menu"
+              action="school_subject_act_window"/>
+</odoo>
