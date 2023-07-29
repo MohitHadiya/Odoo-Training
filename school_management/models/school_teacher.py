@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from .school_student import _compute_fullname
 
 
 class SchoolTeacher(models.Model):
@@ -8,7 +9,7 @@ class SchoolTeacher(models.Model):
 
     first_name = fields.Char(required=True)
     last_name = fields.Char()
-    full_name = fields.Char(string="Name")
+    full_name = fields.Char(string="Name", compute=_compute_fullname)
     date_of_birth = fields.Date(string='Date of Birth')
     age = fields.Integer()
     qualification = fields.Char()

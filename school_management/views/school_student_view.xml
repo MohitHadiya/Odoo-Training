@@ -34,6 +34,8 @@
                             <field name="subjects_ids" widget="many2many_tags"/>
                         </group>
                         <group>
+                            <field name="class_teacher_id"
+                                   attrs="{'invisible': [('class_id', '=', False)], 'required': [('class_id', '!=', False)]}"/>
                             <field name="gender"/>
                             <field name="date_of_birth"/>
                             <field name="age"/>
@@ -41,6 +43,11 @@
                         </group>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>

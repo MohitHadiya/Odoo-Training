@@ -69,6 +69,6 @@
         <field name="act_window_id" ref="school_class_act_window"/>
     </record>
 
-    <menuitem name="class" id="school_class_menu" parent="school_management_main_menu"
+    <menuitem name="Class" id="school_class_menu" parent="school_management_main_menu"
               action="school_class_act_window"/>
 </odoo>

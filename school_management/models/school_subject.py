@@ -6,7 +6,7 @@ class SchoolSubject(models.Model):
     _description = 'School Subject Data'
     _rec_name = 'name'
 
-    name = fields.Char(string='Subject Name', required=True)
+    name = fields.Char(string='Subject Name')
     code = fields.Char(string='Subject Code')
     teacher_ids = fields.Many2many('school.teacher', string='Teachers')
     class_ids = fields.Many2many('school.class', string='Classes')
