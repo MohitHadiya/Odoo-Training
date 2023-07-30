@@ -24,9 +24,15 @@
                         <group>
                             <field name="teacher_id"/>
                         </group>
-                        <field name="students_ids"/>
-                        <field name="subjects_ids"/>
                     </group>
+                    <notebook>
+                        <page string="Student">
+                            <field name="students_ids"/>
+                        </page>
+                        <page string="Subject">
+                            <field name="subjects_ids"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

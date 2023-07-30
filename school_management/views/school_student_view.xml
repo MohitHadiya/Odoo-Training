@@ -20,10 +20,15 @@
         <field name="model">school.student</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button string="Cancel" name="action_cancel" type="object" attrs="{'invisible': [('state', '=', 'cancel')]}"/>
+                    <field name="state" widget="statusbar" options="{'clickable':1}"
+                           statusbar_visible="new,enrolled,pass_out"/>
+                </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar"/>
                     <h2 class="oe_title">
-                        <field name="full_name"/>
+                        <field name="full_name" readonly="false"/>
                     </h2>
                     <group>
                         <group>
