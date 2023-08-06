@@ -9,3 +9,7 @@ class SchoolClass(models.Model):
     teacher_id = fields.Many2one('school.teacher', string='Class Teacher')
     students_ids = fields.One2many('school.student', 'class_id', string='Students')
     subjects_ids = fields.Many2many('school.subject', string='Subjects')
+
+    _sql_constraints = [
+        ('name_uniq', 'unique(name)', 'Class name must be unique!'),
+    ]

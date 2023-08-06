@@ -21,7 +21,7 @@
                         <field name="name"/>
                     </h2>
                     <group>
-                        <group>
+                        <group string="Teacher Info">
                             <field name="teacher_id"/>
                         </group>
                     </group>

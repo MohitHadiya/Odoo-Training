@@ -26,5 +26,7 @@
         'views/school_teacher_view.xml',
         'views/school_subject_view.xml',
         'views/school_class_view.xml',
+        'views/school_exam.xml',
+        'views/school_exam_result.xml',
     ],
 }

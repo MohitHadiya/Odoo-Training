@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import datetime
+from odoo.exceptions import UserError
 
 
 def set_name(self):
@@ -37,10 +39,41 @@ class SchoolStudent(models.Model):
     class_teacher_id = fields.Many2one('school.teacher')
     subjects_ids = fields.Many2many('school.subject')
 
+    @api.constrains("date_of_birth")
+    def check_date_of_birth(self):
+        if self.date_of_birth and self.date_of_birth > datetime.now().date():
+            raise UserError("Date of birth can't be a future date.")
+
     @api.onchange("class_id")
     def onchange_class(self):
         self.subjects_ids = self.class_id.subjects_ids
-        self.class_teacher_id = self.class_id.teacher_id
+        self.class_teacher_id = self.class_id.teacher_id.id
+
+    @api.onchange("date_of_birth")
+    def onchange_date_of_birth(self):
+        today = datetime.now().date()
+        for student in self:
+            if student.date_of_birth:
+                age_in_days = (today - student.date_of_birth).days
+                student.age = age_in_days // 365
 
     def action_cancel(self):
         self.state = 'cancel'
+
+    @api.model_create_multi
+    def create(self, vals):
+        rec = super().create(vals)
+        return rec
+
+    def write(self, vals):
+        rec = super().write(vals)
+        return rec
+
+    def copy(self, default_values=None):
+        default_values = {"first_name": self.first_name + " - copy"}
+        rec = super().copy(default_values)
+        return rec
+
+    def unlink(self):
+        rec = super().unlink()
+        return rec
