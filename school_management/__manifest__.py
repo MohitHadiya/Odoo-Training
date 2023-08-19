@@ -22,11 +22,13 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/data.xml',
         'views/school_student_view.xml',
         'views/school_teacher_view.xml',
         'views/school_subject_view.xml',
         'views/school_class_view.xml',
         'views/school_exam.xml',
         'views/school_exam_result.xml',
+        'wizard/set_class_view.xml',
     ],
 }

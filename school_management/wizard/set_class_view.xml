@@ -1,0 +1,17 @@
+<odoo>
+    <record model="ir.ui.view" id="school_student_wizard_form_view_set_class">
+        <field name="name">School set class</field>
+        <field name="model">set.class</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="class_id" required="1"/>
+                </group>
+            </form>
+            <footer>
+                <button string="Set Class" class="btn-primary" name="set_class" type="object" data-hotkey="s"/>
+                <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+            </footer>
+        </field>
+    </record>
+</odoo>

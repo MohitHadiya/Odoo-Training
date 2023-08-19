@@ -1,0 +1,26 @@
+<odoo>
+    <record id="school_student_sequence" model="ir.sequence">
+        <field name="name">School Student Sequence</field>
+        <field name="code">school.student</field>
+        <field name="prefix">STU</field>
+        <field name="padding">3</field>
+    </record>
+
+    <record id="action_server_student_cancel" model="ir.actions.server">
+        <field name="name">Cancel</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_school_student"/>
+        <field name="binding_model_id" ref="model_school_student"/>
+        <field name="state">code</field>
+        <field name="code">records.server_action_cancel()</field>
+    </record>
+
+    <record id="cron_delete_cancel_student" model="ir.cron">
+        <field name="name">Delete Cancel Students</field>
+        <field name="model_id" ref="model_school_student"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_delete_cancel_student()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+    </record>
+</odoo>

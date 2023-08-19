@@ -6,11 +6,17 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="full_name"/>
-                <field name="contact_number"/>
+                <field name="contact_number" optional="hide"/>
                 <field name="date_of_birth"/>
                 <field name="class_id"/>
                 <field name="gender"/>
                 <field name="age"/>
+                <field name="state" widget="badge"
+                decoration-info="state == 'new'"
+                decoration-success="state == 'enrolled'"
+                decoration-warning="state == 'pass_out'"
+                decoration-danger="state == 'cancel'"
+                />
             </tree>
         </field>
     </record>
@@ -22,6 +28,7 @@
             <form>
                 <header>
                     <button string="Cancel" name="action_cancel" type="object" attrs="{'invisible': [('state', '=', 'cancel')]}"/>
+                    <button string="Wizard" name="action_open_wizard" type="object"/>
                     <field name="state" widget="statusbar" options="{'clickable':1}"
                            statusbar_visible="new,enrolled,pass_out"/>
                 </header>
@@ -36,11 +43,12 @@
                             <field name="last_name"/>
                             <field name="contact_number"/>
                             <field name="class_id"/>
-                            <field name="subjects_ids" widget="many2many_tags"/>
+                            <field name="roll_no"/>
                         </group>
                         <group>
                             <field name="class_teacher_id"
                                    attrs="{'invisible': [('class_id', '=', False)], 'required': [('class_id', '!=', False)]}"/>
+                            <field name="subjects_ids" widget="many2many_tags"/>
                             <field name="gender"/>
                             <field name="date_of_birth"/>
                             <field name="age"/>
@@ -107,7 +115,7 @@
     </record>
 
     <!-- Top menu item -->
-    <menuitem name="School" id="school_management_main_menu">
+    <menuitem name="School" id="school_management_main_menu" web_icon="school_management,static/description/icon.png">
         <menuitem name="Student" id="school_student_menu" action="school_student_action_window"/>
     </menuitem>
 </odoo>

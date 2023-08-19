@@ -5,3 +5,4 @@ school_subject_access,school_subject_access,model_school_subject,,1,1,1,1
 school_class_access,school_class_access,model_school_class,,1,1,1,1
 school_exam_access,school_exam_access,model_school_exam,,1,1,1,1
 school_exam_result_access,school_exam_result_access,model_school_exam_result,,1,1,1,1
+school_set_class_access,school_set_class_access,model_set_class,,1,1,1,1

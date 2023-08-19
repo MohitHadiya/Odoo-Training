@@ -29,6 +29,7 @@ class SchoolStudent(models.Model):
     full_name = fields.Char(string="Name", compute=_compute_fullname, inverse=set_name)
     date_of_birth = fields.Date(string='Date of Birth')
     age = fields.Integer()
+    roll_no = fields.Char()
     contact_number = fields.Char(string='Contact Number')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], default="male")
     state = fields.Selection([('new', 'New'), ('enrolled', 'Enrolled'), ('pass_out', 'Pass Out'), ('cancel', 'Cancel')],
@@ -60,8 +61,10 @@ class SchoolStudent(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
 
-    @api.model_create_multi
+    @api.model
     def create(self, vals):
+        next_roll_no = self.env['ir.sequence'].next_by_code('school.student')
+        vals['roll_no'] = next_roll_no
         rec = super().create(vals)
         return rec
 
@@ -70,10 +73,26 @@ class SchoolStudent(models.Model):
         return rec
 
     def copy(self, default_values=None):
-        default_values = {"first_name": self.first_name + " - copy"}
+        default_values = {"last_name": self.last_name or '' + " - copy"}
         rec = super().copy(default_values)
         return rec
 
     def unlink(self):
         rec = super().unlink()
         return rec
+
+    def server_action_cancel(self):
+        self.state = 'cancel'
+
+    def cron_delete_cancel_student(self):
+        students = self.search([('state', '=', 'cancel')])
+        students.unlink()
+
+    def action_open_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Set Class',
+            'res_model': 'set.class',
+            'view_mode': 'form',
+            'target': 'new',
+        }
