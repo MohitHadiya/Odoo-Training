@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_student_details_document">
+        <t t-call="web.external_layout">
+            <h1 class="row">
+                <span t-field="student.full_name"/>
+            </h1>
+            <t t-set="abc" t-value="123"/>
+            <table class="table table-bordered mt-4 row col-12">
+                <tr class="col-12">
+                    <th class="col-3">First Name :</th>
+                    <th class="col-3">Last Name :</th>
+                    <th class="col-2">Contact Number :</th>
+                    <th class="col-2">Gender :</th>
+                </tr>
+                <tr class="col-12">
+                    <td>
+                        <t t-esc="abc"/>
+                        <span t-field="student.first_name"/>
+                    </td>
+                    <td>
+                        <span t-field="student.last_name"/>
+                    </td>
+                    <td>
+                        <span t-field="student.contact_number"/>
+                    </td>
+                    <td>
+                        <span t-field="student.gender"/>
+                    </td>
+                </tr>
+            </table>
+        </t>
+    </template>
+    <template id="report_student_details_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="student"> <!-- for student in docs -->
+                <t t-call="school_management.report_student_details_document"></t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_student_details" model="ir.actions.report">
+        <field name="name">Student Details</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_management.report_student_details_report</field>
+        <field name="report_file">school_management.report_student_details_report</field>
+        <field name="print_report_name">'Student - %s'%(object.full_name)</field>
+        <field name="binding_model_id" ref="model_school_student"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -22,7 +22,9 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'security/school_security.xml',
         'data/data.xml',
+        'report/student_report.xml',
         'views/school_student_view.xml',
         'views/school_teacher_view.xml',
         'views/school_subject_view.xml',

@@ -44,6 +44,7 @@
                             <field name="contact_number"/>
                             <field name="class_id"/>
                             <field name="roll_no"/>
+                            <field name="user_id"/>
                         </group>
                         <group>
                             <field name="class_teacher_id"

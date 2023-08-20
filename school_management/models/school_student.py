@@ -38,6 +38,7 @@ class SchoolStudent(models.Model):
     image = fields.Image()
     class_id = fields.Many2one('school.class', string='Class')
     class_teacher_id = fields.Many2one('school.teacher')
+    user_id = fields.Many2one('res.users')
     subjects_ids = fields.Many2many('school.subject')
 
     @api.constrains("date_of_birth")
